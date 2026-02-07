@@ -1,10 +1,25 @@
-function Footer() {
-    return (
-      <p className="footer">
+interface FooterProps {
+  onNavigate?: (page: "privacy" | "terms") => void;
+}
+
+function Footer({ onNavigate }: FooterProps) {
+  return (
+    <footer className="footer">
+      <div className="footer-links">
+        <button className="footer-link" onClick={() => onNavigate?.("privacy")}>
+          Privacy Policy
+        </button>
+        <span>•</span>
+        <button className="footer-link" onClick={() => onNavigate?.("terms")}>
+          Terms of Service
+        </button>
+      </div>
+      <p>
         Secure OAuth2 authentication • Privacy-focused • Open Source
       </p>
-    );
-  }
-  
-  export default Footer;
+    </footer>
+  );
+}
+
+export default Footer;
   
