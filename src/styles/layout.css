@@ -1,6 +1,23 @@
 .container {
   max-width: 900px;
   margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 0.5rem;
+  }
+}
+
+.auth-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  gap: 24px;
+  padding: 20px;
 }
 
 .activity-center-wrapper {
@@ -9,14 +26,84 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 0;
+  padding: 20px;
+  margin-top: 60px;
+}
+
+@media (max-width: 640px) {
+  .activity-center-wrapper {
+    padding: 16px;
+    margin-top: 50px;
+  }
 }
 
 .authenticated-content {
   width: 100%;
   max-width: 700px;
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0;
+}
+
+.loading-state,
+.error-state {
+  text-align: center;
+  padding: 40px 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+}
+
+@media (max-width: 640px) {
+  .loading-state,
+  .error-state {
+    padding: 24px 16px;
+    margin: 16px;
+  }
+}
+
+.loading-title,
+.error-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+@media (max-width: 640px) {
+  .loading-title,
+  .error-title {
+    font-size: 16px;
+  }
+}
+
+.error-title {
+  color: #ef4444;
+}
+
+.loading-subtitle,
+.error-message {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.retry-button {
+  background: var(--gradient);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.retry-button:hover {
+  transform: scale(1.05);
+}
+
+.retry-button:active {
+  transform: scale(0.98);
 }
 
 .footer {
@@ -24,4 +111,13 @@
   font-size: 12px;
   color: var(--muted);
   margin-top: 40px;
+  padding: 20px;
+}
+
+@media (max-width: 640px) {
+  .footer {
+    font-size: 11px;
+    margin-top: 20px;
+    padding: 16px;
+  }
 }

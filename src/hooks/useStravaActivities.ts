@@ -11,6 +11,10 @@ interface UseStravaActivitiesResult {
   refetch: () => void;
 }
 
+/**
+ * Hook to fetch and manage user's Strava activities
+ * Handles authentication errors by logging out the user
+ */
 export function useStravaActivities(token: string | null): UseStravaActivitiesResult {
   const [activities, setActivities] = useState<Activity[]>([]);
   const [loading, setLoading] = useState(false);
@@ -18,34 +22,32 @@ export function useStravaActivities(token: string | null): UseStravaActivitiesRe
   const { logout } = useLogout();
 
   const fetchActivities = useCallback(async () => {
-      if (!token) {
-        setActivities([]);
+    if (!token) {
+      setActivities([]);
+      return;
+    }
+
+    setLoading(true);
+    setError(null);
+
+    try {
+      const response = await apiClient.getActivities();
+      setActivities(response.data);
+    } catch (err) {
+      if (isAxiosError(err) && err.response?.status === 401) {
+        setError('Your session has expired. Please log in again.');
+        logout();
         return;
       }
 
-      setLoading(true);
-      setError(null);
-
-      try {
-        const stravaActivities = await apiClient.getActivities().then(res => res.data);
-
-        setActivities(stravaActivities);
-      } catch (err) {
-        if (isAxiosError(err) && err.response?.status === 401) {
-          setError('Your session has expired. Please log in again.');
-          logout();
-          return; 
-        } else {
-          console.error('Error fetching activities:', err);
-          setError('Failed to fetch activities. Please try again later.');
-        }
-        setActivities([]);
-      } finally {
-        setLoading(false);
-      }
-    },
-    [token, logout],
-  );
+      const errorMessage = err instanceof Error ? err.message : 'Failed to fetch activities';
+      console.error('Error fetching activities:', err);
+      setError(errorMessage);
+      setActivities([]);
+    } finally {
+      setLoading(false);
+    }
+  }, [token, logout]);
 
   useEffect(() => {
     fetchActivities();

@@ -19,7 +19,10 @@ export class ApiClient {
     });
   }
 
-  setToken(token: string | null) {
+  /**
+   * Set the authentication token for API requests
+   */
+  setToken(token: string | null): void {
     if (token) {
       this.client.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     } else {
@@ -27,30 +30,46 @@ export class ApiClient {
     }
   }
 
+  /**
+   * Check if an authentication token is set
+   */
   hasToken(): boolean {
     return !!this.client.defaults.headers.common["Authorization"];
   }
 
-  getIndex() {
-    return this.client.get<string>("/");
-  }
-
+  /**
+   * Get Strava authorization URL for OAuth flow
+   */
   getAuthorizationUrl(redirectUri: string) {
-    return this.client.get("/api/strava/auth/authorize?redirect_uri=" + encodeURIComponent(redirectUri));
+    return this.client.get("/api/strava/auth/authorize", {
+      params: { redirect_uri: redirectUri }
+    });
   }
 
+  /**
+   * Deauthorize and revoke the current token
+   */
   deauthorize() {
     return this.client.post<void>("/api/strava/auth/deauthorize");
   }
 
+  /**
+   * Fetch user's Strava activities
+   */
   getActivities() {
     return this.client.get<Activity[]>("/api/strava/activities");
   }
 
+  /**
+   * Get AI-generated training suggestion based on activities
+   */
   getSuggestion() {
     return this.client.get<Activity>("/api/suggest");
   }
 
+  /**
+   * Fetch user profile information
+   */
   getUserProfile() {
     return this.client.get<User>("/api/users/profile");
   }

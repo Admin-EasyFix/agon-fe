@@ -2,6 +2,7 @@
 .hero {
   text-align: center;
   margin: 0 auto 28px;
+  padding: 20px;
 }
 
 .app-icon {
@@ -14,6 +15,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .app-icon img {
@@ -28,9 +30,26 @@
   margin: 0 0 6px;
 }
 
+@media (max-width: 640px) {
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .app-icon {
+    width: 72px;
+    height: 72px;
+  }
+}
+
 .subtitle {
   margin: 6px 0;
   font-size: 15px;
   font-weight: 500;
   color: var(--muted);
+}
+
+@media (max-width: 640px) {
+  .subtitle {
+    font-size: 14px;
+  }
 }
