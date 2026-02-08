@@ -5,9 +5,12 @@ import "../../styles/activity.css";
 
 interface ActivityCardProps {
   activity: Activity;
-  className?: string; // Added optional className prop
+  className?: string;
 }
 
+/**
+ * Displays a single activity with formatted details and metrics
+ */
 export const ActivityCard: React.FC<ActivityCardProps> = ({ activity, className }) => {
   const date = new Date(activity.date);
   const formattedDate = date.toLocaleDateString("en-US", {
@@ -16,32 +19,51 @@ export const ActivityCard: React.FC<ActivityCardProps> = ({ activity, className 
     year: "numeric",
   });
 
+  const hasMetrics = activity.elevation !== undefined || activity.heartRate !== undefined;
+
   return (
-    <Card className={`p-4 activity-box ${className || ""}`.trim()}>
-      <div className="activity-header-row">
-        <div className="activity-icons">
-          <span className="activity-icon">🏃</span>
-          <span className="activity-icon">⏱️</span>
+    <article className={`activity-box ${className || ""}`.trim()}>
+      <Card className="p-4">
+        <div className="activity-header-row">
+          <div className="activity-icons" aria-hidden="true">
+            <span className="activity-icon">🏃</span>
+            <span className="activity-icon">⏱️</span>
+          </div>
+          <h3 className="activity-title">{activity.name}</h3>
+          <div className="activity-pace" aria-label="Pace">{activity.pace}</div>
         </div>
-        <h3 className="activity-title">{activity.name}</h3>
-        <div className="activity-pace">{activity.pace}</div>
-      </div>
-      <div className="activity-details">
-        <span className="activity-date">{formattedDate}</span>
-        {activity.distance > 0 && (
-          <span className="activity-distance"> {activity.distance} km</span>
+
+        <div className="activity-details">
+          <time className="activity-date" dateTime={activity.date}>
+            {formattedDate}
+          </time>
+          {activity.distance > 0 && (
+            <span className="activity-distance" aria-label="Distance">
+              {activity.distance} km
+            </span>
+          )}
+          <span className="activity-duration" aria-label="Duration">
+            {activity.duration} min
+          </span>
+        </div>
+
+        {activity.description && (
+          <div className="activity-feedback">
+            <p className="activity-comment">{activity.description}</p>
+          </div>
         )}
-        <span className="activity-duration"> {activity.duration} min</span>
-      </div>
-      <div className="activity-feedback">
-        {activity.description !== undefined && (
-          <span className="activity-comment">{activity.description}</span>
+
+        {hasMetrics && (
+          <div className="activity-metrics">
+            {activity.elevation !== undefined && (
+              <span aria-label="Elevation gain">{activity.elevation}m elevation</span>
+            )}
+            {activity.heartRate !== undefined && (
+              <span aria-label="Average heart rate">~{activity.heartRate} bpm avg</span>
+            )}
+          </div>
         )}
-      </div>
-      <div className="activity-metrics">
-        {activity.elevation !== undefined && <span> {activity.elevation}m elevation</span>}
-        {activity.heartRate !== undefined && <span> ~{activity.heartRate} bpm avg</span>}
-      </div>
-    </Card>
+      </Card>
+    </article>
   );
 };

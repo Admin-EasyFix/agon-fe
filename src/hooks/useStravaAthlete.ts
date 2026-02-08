@@ -9,6 +9,9 @@ interface UseAthleteResult {
   refetch: () => void;
 }
 
+/**
+ * Hook to fetch and manage user profile from Strava
+ */
 export function useAthlete(): UseAthleteResult {
   const [athlete, setAthlete] = useState<User | null>(null);
   const [loading, setLoading] = useState(false);
@@ -19,11 +22,12 @@ export function useAthlete(): UseAthleteResult {
     setError(null);
 
     try {
-      const athleteData = await apiClient.getUserProfile().then(res => res.data);
-      setAthlete(athleteData);
+      const response = await apiClient.getUserProfile();
+      setAthlete(response.data);
     } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : "Failed to fetch profile";
       console.error("Error fetching athlete:", err);
-      setError(err instanceof Error ? err.message : "Failed to fetch athlete");
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }

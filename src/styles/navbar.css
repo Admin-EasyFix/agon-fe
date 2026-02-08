@@ -3,9 +3,9 @@
   justify-content: space-between;
   align-items: center;
   background: white;
-  border-bottom: 3px solid transparent; /* Make the border transparent */
-  border-image: var(--gradient) 1; /* Apply the gradient */
-  padding: 0.5rem 3rem;
+  border-bottom: 3px solid transparent;
+  border-image: var(--gradient) 1;
+  padding: 0.5rem 1rem;
   width: 100vw;
   position: fixed;
   top: 0;
@@ -14,27 +14,77 @@
   box-sizing: border-box;
 }
 
+@media (min-width: 768px) {
+  .navbar {
+    padding: 0.5rem 3rem;
+  }
+}
+
 .navbar-left,
 .navbar-right {
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .logo {
   height: 32px;
   margin-right: 8px;
+  cursor: pointer;
 }
 
-.app-name {
-  font-weight: bold;
-  font-size: 18px;
+.profile-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+.profile-button:hover {
+  transform: scale(1.05);
+}
+
+.profile-button:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 2px;
 }
 
 .profile-pic {
   height: 36px;
   width: 36px;
   border-radius: 50%;
-  cursor: pointer;
+  object-fit: cover;
+}
+
+.profile-loading-indicator {
+  height: 36px;
+  width: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-top: 3px solid var(--text);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .dropdown {
@@ -46,9 +96,10 @@
   border-radius: 4px;
   min-width: 120px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
 }
 
-.dropdown button {
+.dropdown-item {
   display: block;
   width: 100%;
   padding: 8px 12px;
@@ -56,6 +107,23 @@
   background: none;
   cursor: pointer;
   text-align: left;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-item:hover:not(:disabled) {
+  background-color: #f3f4f6;
+}
+
+.dropdown-item:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.dropdown-error {
+  color: #ef4444;
+  font-size: 12px;
+  padding: 8px 12px;
 }
 
 .dropdown button:hover {

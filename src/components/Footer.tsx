@@ -1,10 +1,10 @@
 function Footer() {
-    return (
-      <p className="footer">
-        Secure OAuth2 authentication • Privacy-focused • Open Source
-      </p>
-    );
-  }
-  
-  export default Footer;
+  return (
+    <footer className="footer" aria-label="Footer">
+      Secure OAuth2 authentication • Privacy-focused • Open Source
+    </footer>
+  );
+}
+
+export default Footer;
   
