@@ -1,0 +1,13 @@
+name: Validate version
+
+description: Validates that the version in package.json has been updated in the pull request.
+
+runs:
+  using: "composite"
+  steps:
+    - name: Auto bump version
+      uses: Admin-EasyFix/github-actions/actions/npm/bump-pr-version@main
+
+    - name: Ensure version is updated
+      uses: Admin-EasyFix/github-actions/actions/npm/validate-pr-version@main
+      
