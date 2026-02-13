@@ -28,10 +28,7 @@ function LoginCard() {
 
   return (
     <section className="login-card" aria-label="Strava login">
-      <h2>Connect with Strava</h2>
-      <p className="subtitle">
-        Connect your Strava account to start analyzing your training data
-      </p>
+      <p className="subtitle">Start your training journey</p>
       <button
         className="connect-button"
         onClick={handleLogin}
@@ -45,7 +42,16 @@ function LoginCard() {
           {error}
         </p>
       )}
-      <p className="description">By connecting, you agree to share your activity data with Agon</p>
+      <p className="description">
+        By connecting, you agree to our{" "}
+        <a href="/terms" target="_blank" rel="noopener noreferrer">
+          Terms of Service
+        </a>
+        {" "}and{" "}
+        <a href="/privacy" target="_blank" rel="noopener noreferrer">
+          Privacy Policy
+        </a>
+      </p>
     </section>
   );
 }
