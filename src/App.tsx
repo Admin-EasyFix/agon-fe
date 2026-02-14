@@ -23,6 +23,7 @@ function App() {
     }
     return null;
   });
+  
   const { activities, loading, error: apiError, refetch } = useStravaActivities(token);
 
   const handleNavigate = (page: "privacy" | "terms") => {
@@ -36,21 +37,16 @@ function App() {
   };
 
   useEffect(() => {
-    const authenticateUser = () => {
-      const hash = window.location.hash;
-      const params = new URLSearchParams(hash.replace(/^#\/?/, ""));
-      const urlToken = params.get("token");
+    const hash = window.location.hash;
+    const params = new URLSearchParams(hash.replace(/^#\/?/, ""));
+    const urlToken = params.get("token");
 
-      if (urlToken) {
-        localStorage.setItem("auth_token", urlToken);
-        setToken(urlToken);
-        apiClient.setToken(urlToken);
-        console.log("User authenticated with token from URL.");
-        window.history.replaceState(null, "", window.location.pathname);
-      }
-    };
-
-    authenticateUser();
+    if (urlToken) {
+      localStorage.setItem("auth_token", urlToken);
+      setToken(urlToken);
+      apiClient.setToken(urlToken);
+      window.history.replaceState(null, "", window.location.pathname);
+    }
   }, []);
 
   if (currentPage === "privacy") {
@@ -74,12 +70,13 @@ function App() {
       </main>
     );
   }
+  const isAuthenticated = apiClient.hasToken();
 
   return (
     <main>
       <div className="container">
-        {!apiClient.hasToken() ? (
-          <div className="flex flex-col items-center justify-center min-h-screen">
+        {!isAuthenticated ? (
+          <div className="auth-layout">
             <Hero />
             <Features />
             <LoginCard />
@@ -87,31 +84,27 @@ function App() {
         ) : (
           <div>
             <Navbar />
-            <div className="activity-center-wrapper">
+            <section className="activity-center-wrapper" aria-label="Activities">
               {loading ? (
-                <div className="text-center">
-                  <div className="text-lg font-medium mb-2">Loading activities...</div>
-                  <div className="text-muted-foreground">Fetching your latest workouts from Strava</div>
+                <div className="loading-state">
+                  <div className="loading-title">Loading activities...</div>
+                  <div className="loading-subtitle">Fetching your latest workouts from Strava</div>
                 </div>
               ) : apiError ? (
-                <div className="text-center">
-                  <div className="text-red-500 text-lg font-medium mb-2">Error loading activities</div>
-                  <div className="text-muted-foreground mb-4">{apiError}</div>
-                  <button 
-                    className="connect-button" 
-                    onClick={refetch}
-                    style={{maxWidth: '200px'}}
-                  >
+                <div className="error-state">
+                  <div className="error-title">Error loading activities</div>
+                  <div className="error-message">{apiError}</div>
+                  <button className="retry-button" onClick={refetch}>
                     Retry
                   </button>
                 </div>
               ) : (
-              <div className="authenticated-content">
+                <div className="authenticated-content">
                   <AIRecommendationCard activities={activities} />
                   <ActivityListCard activities={activities} />
                 </div>
               )}
-            </div>
+            </section>
           </div>
         )}
         <Footer onNavigate={handleNavigate} />

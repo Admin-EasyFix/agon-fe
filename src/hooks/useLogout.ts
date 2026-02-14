@@ -8,26 +8,17 @@ export function useLogout() {
   const logout = useCallback(async () => {
     setLoading(true);
     setError(null);
+
     try {
       await apiClient.deauthorize();
       apiClient.setToken(null);
+      localStorage.removeItem("auth_token");
+      window.location.href = "/";
     } catch (err) {
-      console.error("Error calling deauthorize endpoint:", err);
-      setError(err instanceof Error ? err.message : String(err));
-    } finally {
-      try {
-        localStorage.removeItem("auth_token");
-      } catch (err) {
-        console.error("Error removing auth token:", err);
-        setError(err instanceof Error ? err.message : String(err));
-      }
+      const errorMessage = err instanceof Error ? err.message : "Logout failed";
+      console.error("Logout error:", err);
+      setError(errorMessage);
       setLoading(false);
-      try {
-        window.location.href = "/";
-      } catch (err) {
-        console.error("Error redirecting to home page", err);
-        setError(err instanceof Error ? err.message : String(err));
-      }
     }
   }, []);
 

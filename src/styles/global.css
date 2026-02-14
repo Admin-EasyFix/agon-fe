@@ -5,6 +5,14 @@
   --gradient: linear-gradient(135deg, #f7c01e 0%, #4c483f 100%);
 }
 
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -12,4 +20,15 @@ body {
   color: var(--text);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  font-family: inherit;
+}
+
+@media (max-width: 640px) {
+  body {
+    font-size: 14px;
+  }
 }

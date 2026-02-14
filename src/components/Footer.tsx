@@ -1,3 +1,4 @@
+
 interface FooterProps {
   onNavigate?: (page: "privacy" | "terms") => void;
 }

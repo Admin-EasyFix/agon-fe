@@ -10,12 +10,12 @@ function Navbar() {
   const [open, setOpen] = useState(false);
   const { athlete, loading, error: apiError, refetch } = useAthlete();
   const dropdownRef = useRef<HTMLDivElement>(null);
+  
   const toggleMenu = () => setOpen((prev) => !prev);
 
   useEffect(() => {
-    if (!open) {
-      return;
-    }
+    if (!open) return;
+
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setOpen(false);
@@ -23,40 +23,53 @@ function Navbar() {
     };
 
     document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [open]);
 
   return (
-    <div className="navbar">
+    <nav className="navbar" aria-label="Main navigation">
       <div className="navbar-left">
-        <img src={doveIcon} className="logo" />
+        <img src={doveIcon} alt="Agon" className="logo" />
       </div>
 
       <div className="navbar-right">
         {loading ? (
-          <div className="profile-loading-indicator">
+          <div className="profile-loading-indicator" aria-busy="true" aria-label="Loading profile">
             <div className="spinner"></div>
           </div>
         ) : (
-          <img
-            src={athlete?.profilePicture || userIcon}
-            alt="Profile"
-            className="profile-pic"
+          <button
             onClick={apiError ? refetch : toggleMenu}
-          />
+            className="profile-button"
+            aria-label="Profile menu"
+            aria-expanded={open}
+          >
+            <img
+              src={athlete?.profilePicture || userIcon}
+              alt="User profile"
+              className="profile-pic"
+            />
+          </button>
         )}
         {open && (
-          <div className="dropdown" ref={dropdownRef}>
-            <button onClick={() => logout()} disabled={logoutLoading}>
+          <div className="dropdown" ref={dropdownRef} role="menu">
+            <button
+              onClick={() => logout()}
+              disabled={logoutLoading}
+              role="menuitem"
+              className="dropdown-item"
+            >
               {logoutLoading ? "Logging out..." : "Logout"}
             </button>
-            {logoutError && <div className="text-red-500 text-sm mt-2">{logoutError}</div>}
+            {logoutError && (
+              <div className="dropdown-error" role="alert">
+                {logoutError}
+              </div>
+            )}
           </div>
         )}
       </div>
-    </div>
+    </nav>
   );
 }
 
