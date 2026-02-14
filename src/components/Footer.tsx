@@ -13,6 +13,10 @@ function Footer({ onNavigate }: FooterProps) {
         <button className="footer-link" onClick={() => onNavigate?.("terms")}>
           Terms of Service
         </button>
+        <span>•</span>
+        <a className="footer-link" href="https://easyfix-web.pages.dev/" target="_blank" rel="noopener noreferrer">
+          EasyFix
+        </a>
       </div>
       <p>
         Secure OAuth2 authentication • Privacy-focused • Open Source
