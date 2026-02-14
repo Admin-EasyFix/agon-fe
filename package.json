@@ -17,7 +17,7 @@
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-oauth2-code-pkce": "^1.23.2",
-    "tailwind-merge": "^3.3.1",
+    "tailwind-merge": "^3.4.0",
     "uuid": "^13.0.0"
   },
   "devDependencies": {
