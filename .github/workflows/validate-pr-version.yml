@@ -1,0 +1,22 @@
+name: Validate pull request version
+
+description: This workflow validates that the version in package.json has been updated in the pull request.
+
+on:
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  validate-pull-request:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v5
+
+    - name: Validate application
+      uses: ./.github/actions/validate-version
