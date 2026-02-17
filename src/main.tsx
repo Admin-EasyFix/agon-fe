@@ -3,6 +3,7 @@ import App from "./App";
 import "./styles/global.css";
 import "./styles/layout.css";
 import "./styles/utilities.css";
+import "./styles/legal.css";
 
 const root = document.getElementById("root");
 if (!root) {
