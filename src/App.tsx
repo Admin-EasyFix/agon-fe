@@ -5,11 +5,16 @@ import LoginCard from "./components/LoginCard";
 import { ActivityListCard } from "./components/ActivityListCard";
 import { AIRecommendationCard } from "./components/AIRecommendationCard";
 import Navbar from "./components/Navbar";
+import PrivacyPolicy from "./components/PrivacyPolicy";
+import TermsOfService from "./components/TermsOfService";
 import { useEffect, useState } from "react";
 import { apiClient } from "./api/apiClient";
 import { useStravaActivities } from "./hooks/useStravaActivities";
 
+type Page = "home" | "privacy" | "terms";
+
 function App() {
+  const [currentPage, setCurrentPage] = useState<Page>("home");
   const [token, setToken] = useState<string | null>(() => {
     const localToken = localStorage.getItem("auth_token");
     if (localToken) {
@@ -20,6 +25,16 @@ function App() {
   });
   
   const { activities, loading, error: apiError, refetch } = useStravaActivities(token);
+
+  const handleNavigate = (page: "privacy" | "terms") => {
+    setCurrentPage(page);
+    window.scrollTo(0, 0);
+  };
+
+  const handleBack = () => {
+    setCurrentPage("home");
+    window.scrollTo(0, 0);
+  };
 
   useEffect(() => {
     const hash = window.location.hash;
@@ -34,6 +49,27 @@ function App() {
     }
   }, []);
 
+  if (currentPage === "privacy") {
+    return (
+      <main>
+        <div className="container">
+          <PrivacyPolicy onBack={handleBack} />
+          <Footer onNavigate={handleNavigate} />
+        </div>
+      </main>
+    );
+  }
+
+  if (currentPage === "terms") {
+    return (
+      <main>
+        <div className="container">
+          <TermsOfService onBack={handleBack} />
+          <Footer onNavigate={handleNavigate} />
+        </div>
+      </main>
+    );
+  }
   const isAuthenticated = apiClient.hasToken();
 
   return (
@@ -71,7 +107,7 @@ function App() {
             </section>
           </div>
         )}
-        <Footer />
+        <Footer onNavigate={handleNavigate} />
       </div>
     </main>
   );
