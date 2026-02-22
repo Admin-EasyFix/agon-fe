@@ -2,7 +2,7 @@ import React from "react";
 import { Card } from "../ui/card";
 import type { Activity } from "../../types/Activity";
 import "../../styles/activity.css";
-import runningIcon from '../../assets/running-shoe.svg';
+import runningIcon from '../../assets/running.png';
 
 interface ActivityCardProps {
   activity: Activity;
