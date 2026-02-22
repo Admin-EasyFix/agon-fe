@@ -7,7 +7,7 @@ import { AIRecommendationCard } from "./components/AIRecommendationCard";
 import Navbar from "./components/Navbar";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import TermsOfService from "./components/TermsOfService";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { apiClient } from "./api/apiClient";
 import { useStravaActivities } from "./hooks/useStravaActivities";
 
@@ -15,7 +15,7 @@ type Page = "home" | "privacy" | "terms";
 
 function App() {
   const [currentPage, setCurrentPage] = useState<Page>("home");
-  const [token, setToken] = useState<string | null>(() => {
+  const [token] = useState<string | null>(() => {
     // Check URL for token first
     const hash = window.location.hash;
     const params = new URLSearchParams(hash.replace(/^#\/?/, ""));
