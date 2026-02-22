@@ -7,8 +7,8 @@ function Hero() {
       <div className="app-icon" aria-hidden="true">
         <img src={doveIcon} alt="" />
       </div>
-      <h1>Agon</h1>
-      <p className="subtitle">AI-powered training insights for athletes</p>
+      <h1>agon</h1>
+      <p className="subtitle">Your personal coach</p>
     </header>
   );
 }

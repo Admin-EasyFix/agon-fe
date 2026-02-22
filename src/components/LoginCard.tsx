@@ -43,14 +43,8 @@ function LoginCard() {
         </p>
       )}
       <p className="description">
-        By connecting, you agree to our{" "}
-        <a href="/terms" target="_blank" rel="noopener noreferrer">
-          Terms of Service
-        </a>
-        {" "}and{" "}
-        <a href="/privacy" target="_blank" rel="noopener noreferrer">
-          Privacy Policy
-        </a>
+        By connecting, you agree to our<br />
+        terms and policies
       </p>
     </section>
   );
