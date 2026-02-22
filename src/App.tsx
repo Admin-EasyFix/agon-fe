@@ -16,6 +16,19 @@ type Page = "home" | "privacy" | "terms";
 function App() {
   const [currentPage, setCurrentPage] = useState<Page>("home");
   const [token, setToken] = useState<string | null>(() => {
+    // Check URL for token first
+    const hash = window.location.hash;
+    const params = new URLSearchParams(hash.replace(/^#\/?/, ""));
+    const urlToken = params.get("token");
+
+    if (urlToken) {
+      localStorage.setItem("auth_token", urlToken);
+      apiClient.setToken(urlToken);
+      window.history.replaceState(null, "", window.location.pathname);
+      return urlToken;
+    }
+
+    // Fall back to localStorage
     const localToken = localStorage.getItem("auth_token");
     if (localToken) {
       apiClient.setToken(localToken);
@@ -35,19 +48,6 @@ function App() {
     setCurrentPage("home");
     window.scrollTo(0, 0);
   };
-
-  useEffect(() => {
-    const hash = window.location.hash;
-    const params = new URLSearchParams(hash.replace(/^#\/?/, ""));
-    const urlToken = params.get("token");
-
-    if (urlToken) {
-      localStorage.setItem("auth_token", urlToken);
-      setToken(urlToken);
-      apiClient.setToken(urlToken);
-      window.history.replaceState(null, "", window.location.pathname);
-    }
-  }, []);
 
   if (currentPage === "privacy") {
     return (
