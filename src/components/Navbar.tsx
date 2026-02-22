@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import useLogout from "../hooks/useLogout";
-import doveIcon from '../assets/golden_dove.svg';
+import doveIcon from '../assets/dove-golden.svg';
 import userIcon from '../assets/user.png';
 import logoutIcon from '../assets/logout.svg';
 import { useAthlete } from "../hooks/useStravaAthlete";

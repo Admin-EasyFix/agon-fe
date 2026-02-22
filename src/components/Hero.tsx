@@ -1,4 +1,4 @@
-import doveIcon from '../assets/dove.svg';
+import doveIcon from '../assets/dove-white.svg';
 import "../styles/hero.css";
 
 function Hero() {
