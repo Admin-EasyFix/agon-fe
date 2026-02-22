@@ -50,14 +50,13 @@
 }
 
 .activity-icon {
-  width: 24px;
-  height: 24px;
-  background: #fff9eb;
+  width: 32px;
+  height: 32px;
   border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #f7c01e;
+  display: block;
+  padding: 4px;
+  box-sizing: border-box;
+  object-fit: contain;
 }
 
 .activity-title {
