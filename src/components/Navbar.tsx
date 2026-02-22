@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import useLogout from "../hooks/useLogout";
 import doveIcon from '../assets/golden_dove.svg';
 import userIcon from '../assets/user.png';
+import logoutIcon from '../assets/logout.svg';
 import { useAthlete } from "../hooks/useStravaAthlete";
 import "../styles/navbar.css";
 
@@ -30,6 +31,7 @@ function Navbar() {
     <nav className="navbar" aria-label="Main navigation">
       <div className="navbar-left">
         <img src={doveIcon} alt="Agon" className="logo" />
+        <span className="app-name">Agon</span>
       </div>
 
       <div className="navbar-right">
@@ -59,6 +61,7 @@ function Navbar() {
               role="menuitem"
               className="dropdown-item"
             >
+              <img src={logoutIcon} alt="" className="dropdown-item-icon" />
               {logoutLoading ? "Logging out..." : "Logout"}
             </button>
             {logoutError && (
