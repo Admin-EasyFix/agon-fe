@@ -18,14 +18,14 @@ function PrivacyPolicy({ onBack }: PrivacyPolicyProps) {
       <section>
         <h2>1. Introduction</h2>
         <p>
-          Welcome to Agon. We respect your privacy and are committed to protecting your personal data. 
+          Welcome to agon. We respect your privacy and are committed to protecting your personal data. 
           This privacy policy explains how we collect, use, and safeguard your information when you use our service.
         </p>
       </section>
 
       <section>
         <h2>2. Information We Collect</h2>
-        <p>When you use Agon, we may collect the following types of information:</p>
+        <p>When you use agon, we may collect the following types of information:</p>
         <ul>
           <li><strong>Strava Data:</strong> With your authorization, we access your Strava activity data including workouts, performance metrics, and profile information.</li>
           <li><strong>Authentication Data:</strong> We store authentication tokens to maintain your session and access your Strava data on your behalf.</li>
