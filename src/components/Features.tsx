@@ -1,4 +1,4 @@
-import { Zap } from 'lucide-react';
+import { ListChecks, Sparkles } from 'lucide-react';
 import "../styles/feature.css";
 
 /**
@@ -9,11 +9,20 @@ function Features() {
     <section className="features" aria-label="Features">
       <div className="feature-card">
         <div className="feature-icon" aria-hidden="true">
-          <Zap />
+          <ListChecks />
         </div>
         <div>
-          <h3>Smart Training Plans</h3>
-          <p className="description">AI-generated workouts based on your data</p>
+          <h3>Descriptions</h3>
+          <p className="description">AI-generated descriptions for your activities</p>
+        </div>
+      </div>
+      <div className="feature-card">
+        <div className="feature-icon" aria-hidden="true">
+          <Sparkles />
+        </div>
+        <div>
+          <h3>Suggestion</h3>
+          <p className="description">AI-powered suggestion for your next activity</p>
         </div>
       </div>
     </section>

@@ -47,3 +47,21 @@
   background: #fee2e2;
   border-radius: 6px;
 }
+
+.login-card .description {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 12px 0 0 0;
+}
+
+.login-card .description a {
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.login-card .description a:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}

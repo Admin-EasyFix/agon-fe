@@ -8,18 +8,17 @@ export function useLogout() {
   const logout = useCallback(async () => {
     setLoading(true);
     setError(null);
-
     try {
       await apiClient.deauthorize();
-      apiClient.setToken(null);
-      localStorage.removeItem("auth_token");
-      window.location.href = "/";
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : "Logout failed";
       console.error("Logout error:", err);
       setError(errorMessage);
-      setLoading(false);
     }
+    setLoading(false);
+    apiClient.setToken(null);
+    localStorage.removeItem("auth_token");
+    window.location.href = "/";
   }, []);
 
   return { logout, loading, error } as const;
