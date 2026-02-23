@@ -2,6 +2,7 @@ import React from "react";
 import { Card } from "../ui/card";
 import type { Activity } from "../../types/Activity";
 import "../../styles/activity.css";
+import runningIcon from '../../assets/running.png';
 
 interface ActivityCardProps {
   activity: Activity;
@@ -26,8 +27,7 @@ export const ActivityCard: React.FC<ActivityCardProps> = ({ activity, className 
       <Card className="p-4">
         <div className="activity-header-row">
           <div className="activity-icons" aria-hidden="true">
-            <span className="activity-icon">🏃</span>
-            <span className="activity-icon">⏱️</span>
+            <img src={runningIcon} alt="" className="activity-icon" />
           </div>
           <h3 className="activity-title">{activity.name}</h3>
           <div className="activity-pace" aria-label="Pace">{activity.pace}</div>

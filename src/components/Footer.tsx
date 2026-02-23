@@ -16,7 +16,7 @@ function Footer({ onNavigate }: FooterProps) {
         </button>
         <span>•</span>
         <a className="footer-link" href="https://easyfix-web.pages.dev/" target="_blank" rel="noopener noreferrer">
-          EasyFix
+          Contact
         </a>
       </div>
       <p>

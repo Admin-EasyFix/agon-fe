@@ -18,7 +18,7 @@ function TermsOfService({ onBack }: TermsOfServiceProps) {
       <section>
         <h2>1. Acceptance of Terms</h2>
         <p>
-          By accessing and using Agon, you agree to be bound by these Terms of Service. 
+          By accessing and using agon, you agree to be bound by these Terms of Service. 
           If you do not agree to these terms, please do not use our service.
         </p>
       </section>
@@ -26,7 +26,7 @@ function TermsOfService({ onBack }: TermsOfServiceProps) {
       <section>
         <h2>2. Description of Service</h2>
         <p>
-          Agon is a fitness application that integrates with Strava to display your activities 
+          agon is a fitness application that integrates with Strava to display your activities 
           and provide AI-powered training recommendations. The service requires you to authorize 
           access to your Strava account.
         </p>
@@ -34,7 +34,7 @@ function TermsOfService({ onBack }: TermsOfServiceProps) {
 
       <section>
         <h2>3. User Responsibilities</h2>
-        <p>As a user of Agon, you agree to:</p>
+        <p>As a user of agon, you agree to:</p>
         <ul>
           <li>Provide accurate information when connecting your accounts</li>
           <li>Maintain the security of your authentication credentials</li>
@@ -55,7 +55,7 @@ function TermsOfService({ onBack }: TermsOfServiceProps) {
       <section>
         <h2>5. AI Recommendations</h2>
         <p>
-          The AI-powered training recommendations provided by Agon are for informational purposes 
+          The AI-powered training recommendations provided by agon are for informational purposes 
           only. They should not be considered as professional medical or fitness advice. Always 
           consult with qualified professionals before making significant changes to your training.
         </p>
@@ -64,7 +64,7 @@ function TermsOfService({ onBack }: TermsOfServiceProps) {
       <section>
         <h2>6. Intellectual Property</h2>
         <p>
-          All content, features, and functionality of Agon are owned by us and are protected by 
+          All content, features, and functionality of agon are owned by us and are protected by 
           international copyright, trademark, and other intellectual property laws.
         </p>
       </section>
@@ -72,7 +72,7 @@ function TermsOfService({ onBack }: TermsOfServiceProps) {
       <section>
         <h2>7. Limitation of Liability</h2>
         <p>
-          Agon is provided "as is" without warranties of any kind. We are not liable for any 
+          agon is provided "as is" without warranties of any kind. We are not liable for any 
           damages arising from your use of the service, including but not limited to direct, 
           indirect, incidental, or consequential damages.
         </p>

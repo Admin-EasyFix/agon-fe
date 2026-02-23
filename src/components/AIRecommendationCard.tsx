@@ -21,7 +21,7 @@ export const AIRecommendationCard: React.FC<AIRecommendationCardProps> = ({ acti
       distance: 0,
       pace: "--:--",
       duration: 0,
-      description: "Welcome to Agon! Once you have some activities logged, I'll provide personalized training insights and recommendations based on your performance data.",
+      description: "Welcome to agon! Once you have some activities logged, I'll provide personalized training insights and recommendations based on your performance data.",
       elevation: undefined,
       heartRate: undefined,
       type: "other"

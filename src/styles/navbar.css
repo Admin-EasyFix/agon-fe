@@ -29,8 +29,17 @@
 
 .logo {
   height: 32px;
-  margin-right: 8px;
+  margin-right: 2px;
   cursor: pointer;
+}
+
+.app-name {
+  font-weight: 700;
+  font-size: 18px;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .profile-button {
@@ -100,7 +109,9 @@
 }
 
 .dropdown-item {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 8px;
   width: 100%;
   padding: 8px 12px;
   border: none;
@@ -109,6 +120,12 @@
   text-align: left;
   font-size: 14px;
   transition: background-color 0.2s ease;
+}
+
+.dropdown-item-icon {
+  width: 28px;
+  height: 28px;
+  display: block;
 }
 
 .dropdown-item:hover:not(:disabled) {
