@@ -18,8 +18,8 @@ function Features() {
           </div>
         </div>
       </div>
-      <div className="feature-row">
-        <div className="feature-card">
+      <div className="feature-card">
+        <div className="feature-row">
           <div className="feature-icon" aria-hidden="true">
             <Sparkles />
           </div>
