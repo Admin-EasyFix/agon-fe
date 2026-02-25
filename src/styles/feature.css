@@ -1,4 +1,19 @@
 /* feature.css */
+/* Ensure icon and content are always side by side */
+.feature-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: nowrap;
+}
+
+@media (max-width: 600px) {
+  .feature-row {
+    flex-wrap: nowrap;
+    gap: 8px;
+  }
+}
 .feature-card {
   background: white;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
