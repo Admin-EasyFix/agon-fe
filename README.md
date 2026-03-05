@@ -1,8 +1,16 @@
-# 🕊️ Agon Frontend
+# 🕊️ agon frontend
 
 Agon is a web application that provides AI-powered training insights for athletes. By connecting your Strava account, you can view your recent activities, receive performance analytics, and get personalized recommendations for future workouts.
 
-🚀 **Live Application:** https://agon-easyfix.onrender.com
+This repository contains the frontend web application that interacts with the Agon backend API.
+
+**Live Application:** https://agon-easyfix.onrender.com
+
+**Backend Repository**: https://github.com/Admin-EasyFix/agon-be
+
+## Demo
+
+![agon demo](./docs/demo.gif)
 
 ## Features
 
@@ -19,6 +27,18 @@ Agon is a web application that provides AI-powered training insights for athlete
 *   **Styling:** CSS Modules, `clsx`, `tailwind-merge`
 *   **Icons:** Lucide React
 
+## Architecture
+
+The frontend communicates with the Agon Backend REST API, which handles:
+* Strava OAuth authentication
+* Activity retrieval
+* AI analysis using Google Gemini
+  
+The frontend is responsible for:
+* User authentication flow
+* Displaying activities
+* Rendering AI-generated recommendations
+
 ## Getting Started
 
 Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
@@ -26,7 +46,7 @@ Follow these instructions to get a copy of the project up and running on your lo
 ### Prerequisites
 
 *   [Node.js](https://nodejs.org/) (version 20.x or later)
-*   A backend API endpoint that the frontend can communicate with.
+*   Running agon backend.
 
 ### Installation & Running Locally
 
