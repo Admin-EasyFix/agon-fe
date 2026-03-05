@@ -1,4 +1,4 @@
-import React from "react";
+import type { FC } from "react";
 import { Card } from "../ui/card";
 import type { Activity } from "../../types/Activity";
 import "../../styles/activity.css";
@@ -12,7 +12,7 @@ interface ActivityCardProps {
 /**
  * Displays a single activity with formatted details and metrics
  */
-export const ActivityCard: React.FC<ActivityCardProps> = ({ activity, className }) => {
+export const ActivityCard: FC<ActivityCardProps> = ({ activity, className }) => {
   const date = new Date(activity.date);
   const formattedDate = date.toLocaleDateString("en-US", {
     month: "short",

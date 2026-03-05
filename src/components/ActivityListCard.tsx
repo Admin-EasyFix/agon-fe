@@ -1,4 +1,4 @@
-import React from "react";
+import type { FC } from "react";
 import type { Activity } from "../types/Activity";
 import "../styles/activity.css";
 import { ActivityCard } from "./ui/activityCard";
@@ -7,7 +7,7 @@ interface ActivityListCardProps {
   activities: Activity[];
 }
 
-export const ActivityListCard: React.FC<ActivityListCardProps> = ({ activities }) => (
+export const ActivityListCard: FC<ActivityListCardProps> = ({ activities }) => (
   <section className="activity-list-card" aria-label="Activity list">
     <h2 className="activity-header">Activities ({activities.length})</h2>
     {activities.length === 0 ? (
