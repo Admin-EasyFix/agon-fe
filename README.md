@@ -10,7 +10,7 @@ This repository contains the frontend web application that interacts with the Ag
 
 ## Demo
 
-![agon demo](./docs/demo.gif)
+![agon demo](./src/docs/demo.gif)
 
 ## Features
 
