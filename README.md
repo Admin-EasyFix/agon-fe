@@ -8,6 +8,10 @@ This repository contains the frontend web application that interacts with the Ag
 
 **Backend Repository**: https://github.com/Admin-EasyFix/agon-be
 
+## Demo
+
+![agon demo](./docs/demo.gif)
+
 ## Features
 
 *   **Strava Integration:** Securely connect your Strava account using OAuth2 to sync your activities.
